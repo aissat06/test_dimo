@@ -1,0 +1,53 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+    <section id="main-content">
+        <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i>Créer une actualité</h3>
+            <div class="row mt">
+                <div class="content-panel">
+                    <section id="unseen">
+                        {# {{ include('actualite/_form.html.twig') }} #}
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <div class="form-group" >
+                            <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                        </div>
+                    {{ form_end(form) }}
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    {# <h1>Create new Actualite</h1> #}
+    {# <a href="{{ path('actualite_index') }}">back to list</a> #}
+    <style>
+        #main-content {
+            margin-left: 230px;
+            margin-right: 20px;
+        }
+        #unseen {
+            padding: 20px;
+        }
+        .wrapper {
+            margin-top: 100px;
+        }
+        .mt {
+            margin-top: 25px;
+        }
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .content-panel {
+            background: #ffffff;
+            box-shadow: 0px 3px 2px #aab2bd;
+            padding-top: 15px;
+            padding-bottom: 5px;
+        }
+        
+    </style>
+{% endblock %}

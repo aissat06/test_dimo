@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire index{% endblock %}
+
+{% block body %}
+    <section id="main-content">
+        <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i>Liste des enregistrements</h3>
+            <div class="row">
+                <div class="content-panel">
+                    <section id="unseen">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>NomCF</th>
+                                    <th>PrenomCF</th>
+                                    <th>AdresseCF</th>
+                                    <th>TelephoneCF</th>
+                                    <th>EmailCF</th>
+                                    <th>TypeB</th>
+                                    <th>AnneeC</th>
+                                    <th>actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for formulaire in formulaires %}
+                                    <tr>
+                                        <td>{{ formulaire.id }}</td>
+                                        <td>{{ formulaire.nomCF }}</td>
+                                        <td>{{ formulaire.prenomCF }}</td>
+                                        <td>{{ formulaire.adresseCF }}</td>
+                                        <td>{{ formulaire.telephoneCF }}</td>
+                                        <td>{{ formulaire.emailCF }}</td>
+                                        <td>{{ formulaire.typeB }}</td>
+                                        <td>{{ formulaire.anneeC }}</td>
+                                        <td>
+                                            <a href="#">show</a>
+                                            <a href="#">edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+            <!-- /content-panel -->
+        </section>
+    </section>
+    {# <a href="{{ path('app_formulaire_new') }}">Create new</a> #}
+
+    <style>
+        table .unread .btn a {
+            color: #fff;
+        }
+        .btn {
+            display: ruby-text-container;
+        }
+        #main-content {
+            margin-left: 230px;
+            margin-right: 20px;
+        }
+        .wrapper {
+            margin-top: 100px;
+        }
+        .mt {
+            margin-top: 25px;
+        }
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .content-panel {
+            background: #ffffff;
+            box-shadow: 0px 3px 2px #aab2bd;
+            padding-top: 15px;
+            padding-bottom: 5px;
+        }
+        
+    </style>
+{% endblock %}

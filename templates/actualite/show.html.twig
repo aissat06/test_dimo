@@ -1,0 +1,143 @@
+{% extends 'base_mghcloud.html.twig' %}
+
+{% block title %}{{actualite.titre}}{% endblock %}
+
+{% block body %}
+    {# <h1>Actualite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ actualite.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ actualite.titre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ actualite.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ actualite.author }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ actualite.createdAt ? actualite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ actualite.updatedAt ? actualite.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('actualite_index') }}">back to list</a>
+
+    <a href="{{ path('actualite_edit', {'id': actualite.id}) }}">edit</a>
+
+    {{ include('actualite/_delete_form.html.twig') }} #}
+    <!-- Sub-Banner Section Start -->
+    <div class="sub-banner">
+        <div class="display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="sub-banner-content">
+                                <h2>Nos Actualités</h2>
+                                <ul>
+                                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                                    <li class="active">Blog </li>
+                                    <li class="active">Artcile N° {{actualite.id}} </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sub-Banner Section End -->
+    <div class="container section-padding">
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                {# <div class="card"> #}
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-size: 30px; font-weight: bold;">{{actualite.titre}}</h4>
+                        <div class="d-flex align-items-center mb-4 text-muted author-info">
+                            <span class="d-flex align-items-center" title="Mon, 31 Jan 2022 00:00:00 +0000">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="mr-2" viewBox="0 0 16 16" role="img" fill="currentColor">
+                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                </svg>
+                                {{actualite.updatedAt | date("d/m/Y")}}
+                            </span>
+                        </div>
+                        <img class="card-img-top mb-3" src="/uploads/actualite/{{actualite.image}}" alt="Card image cap">
+                        <p class="card-text">{{actualite.contenu |raw}}</p>
+                        {# <p class="card-text"><small class="text-muted">Mise à jour le : {{actualite.updatedAt | date("d/m/Y")}}</small></p> #}
+                    </div>
+                {# </div> #}
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3 p-3">
+                    <h2 class="card-title">Nos dérniers articles</h2>
+                    <div class="related-tube-psts">
+                        {% set break = false %}
+                        {% set i = 0 %}
+                        {% for actualite in actualites %}
+                            {% set i = i + 1 %}
+                            {% if i <= 4 %}
+                                <div class="rlted-video">
+                                    <div class="tube-pst-meta">
+                                        {# <h5 class="text-capitalize"><a href="{{ path('detail_cours_index', {'idmodule': video.modulecours.id , 'idvideo': video.id}) }}" title="">{{video.id}} - {{ video.nom }}</a></h5> #}
+                                        <h4 class="card-title" style="font-size: 20px; font-weight: bold" >{{actualite.titre}}</h4>
+                                        <div class="d-flex align-items-center mb-4 text-muted author-info">
+                                            <span class="d-flex align-items-center" title="Mon, 31 Jan 2022 00:00:00 +0000">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="mr-2" viewBox="0 0 16 16" role="img" fill="currentColor">
+                                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                                </svg>
+                                                {{actualite.updatedAt | date("d/m/Y")}}
+                                            </span>
+                                        </div>
+                                        <div class="mb-3" >
+                                            <a href="{{ path('actualite_show', {'id': actualite.id})}}" style="color:#0033ff">Lire l'intégralité de l'article</a>
+                                        </div>
+                                        
+                                        <p class="card-text">{{actualite.contenu |u.truncate(180, '...', false) |raw}}</p>
+                                        {# <p class="card-text"><small class="text-muted">Mise à jour le : {{actualite.updatedAt | date("d/m/Y")}}</small></p> #}
+                                        <hr>
+                                    </div>												
+                                </div>
+                            {% else %}
+                                {% set break = true %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        hr {
+            border-top: 2px solid #FF9800;
+            width: 250px;
+            margin: 8px;
+        }
+        .card-title {
+            font-weight: 500;
+        }
+        p {
+            font-size: 18px;
+            color: #2a2a2a;
+            line-height: 1.5;
+        }
+        .text-muted {
+            color: #FF9800;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {# <div class="container  pt-5 mt-5">
+        <h1>Register</h1>
+        <form method="post">
+            {{ form(registrationForm) }}
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+    </div> #}
+    <div class="container  pt-5 mt-5">
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.nom) }}
+            {{ form_row(registrationForm.prenom) }}
+            {{ form_row(registrationForm.telephone) }}
+            {{ form_row(registrationForm.adresse) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.password, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+    <style>
+        label {
+            padding-top: 20px;
+            display: block;
+        }
+        form input {
+            min-width: -webkit-fill-available;
+        }
+        input#registration_form_agreeTerms {
+            min-width: auto;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire{% endblock %}
+
+{% block body %}
+    <h1>Formulaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formulaire.id }}</td>
+            </tr>
+            <tr>
+                <th>NomCF</th>
+                <td>{{ formulaire.nomCF }}</td>
+            </tr>
+            <tr>
+                <th>PrenomCF</th>
+                <td>{{ formulaire.prenomCF }}</td>
+            </tr>
+            <tr>
+                <th>AdresseCF</th>
+                <td>{{ formulaire.adresseCF }}</td>
+            </tr>
+            <tr>
+                <th>TelephoneCF</th>
+                <td>{{ formulaire.telephoneCF }}</td>
+            </tr>
+            <tr>
+                <th>EmailCF</th>
+                <td>{{ formulaire.emailCF }}</td>
+            </tr>
+            <tr>
+                <th>TypeB</th>
+                <td>{{ formulaire.typeB }}</td>
+            </tr>
+            <tr>
+                <th>AnneeC</th>
+                <td>{{ formulaire.anneeC }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_formulaire_index') }}">back to list</a>
+
+    <a href="{{ path('app_formulaire_edit', {'id': formulaire.id}) }}">edit</a>
+
+    {{ include('formulaire/_delete_form.html.twig') }}
+{% endblock %}
